@@ -10,6 +10,6 @@ faers_cat <-
 which_records <- sample( seq( nrow( faers_cat ) ) , round( nrow( faers_cat ) * 0.75 ) )
 
 # always sample year == 2016
-faers_cat <- unique( faers_cat[ which_records , ] , subset( faers_cat , year == 2016 ) )
+faers_cat <- unique( rbind( faers_cat[ which_records , ] , subset( faers_cat , year == 2016 ) ) )
 
 lodown( "faers" , faers_cat )
