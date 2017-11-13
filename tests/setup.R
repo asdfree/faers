@@ -8,7 +8,7 @@ faers_cat <-
 	get_catalog( "faers" ,
 		output_dir = file.path( getwd() ) )
 
-record_categories <- ceiling( seq( nrow( faers_cat ) ) / ceiling( nrow( faers_cat ) / 5 ) )
+record_categories <- ceiling( seq( nrow( faers_cat ) ) / ceiling( nrow( faers_cat ) / 8 ) )
 
 faers_cat <- unique( rbind( faers_cat[ record_categories == this_sample_break , ] , faers_cat[ faers_cat$year == 2016 , ] ) )
 
