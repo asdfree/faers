@@ -6,7 +6,7 @@ faers_cat <- get_catalog( "faers" , output_dir = file.path( getwd() ) )
 record_categories <- ceiling( seq( nrow( faers_cat ) ) / ceiling( nrow( faers_cat ) / 8 ) )
 faers_cat <- faers_cat[ record_categories == this_sample_break , ]
 lodown( "faers" , faers_cat )
-if( any( faers_cat$year == 2016 ) ){
+if( any( faers_cat$year == 2016 & faers_cat$quarter == 4 ) ){
 faers_drug_df <- 
 	readRDS( file.path( getwd() , "2016 q4/drug16q4.rds" ) )
 
