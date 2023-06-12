@@ -31,7 +31,7 @@ faers_df <-	merge( faers_demo_df , faers_deaths_df )
 # confirm that the analysis file matches the number of death outcomes
 stopifnot( nrow( faers_deaths_df ) == nrow( faers_df ) )
 
-# confirm zero reports include multiple deaths
+# confirm zero reports include multiple deaths from the same reported adverse event
 stopifnot( nrow( faers_df ) == length( unique( faers_df[ , 'primaryid' ] ) ) )
 # faers_fn <- file.path( path.expand( "~" ) , "FAERS" , "this_file.rds" )
 # saveRDS( faers_df , file = faers_fn , compress = FALSE )
@@ -110,7 +110,7 @@ glm_result <-
 	)
 
 summary( glm_result )
-
+stopifnot( nrow( faers_df ) == 37704 )
 library(dplyr)
 faers_tbl <- as_tibble( faers_df )
 faers_tbl %>%
