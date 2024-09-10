@@ -1,6 +1,10 @@
 # side effect guestbook
 # violet you're turning violet
 # vi'lent dose response
+read_faers <-
+	function( this_fn ){
+		read.table( this_fn , sep = "$" , header = TRUE , comment.char = "" , quote = "" )
+	}
 library(httr)
 
 tf <- tempfile()
@@ -10,10 +14,6 @@ this_url <- "https://fis.fda.gov/content/Exports/faers_ascii_2023q1.zip"
 GET( this_url , write_disk( tf ) , progress() )
 
 unzipped_files <- unzip( tf , exdir = tempdir() )
-read_faers <-
-	function( this_fn ){
-		read.table( this_fn , sep = "$" , header = TRUE , comment.char = "" , quote = "" )
-	}
 # one record per report
 faers_demo_df <- read_faers( grep( 'DEMO23Q1\\.txt$' , unzipped_files , value = TRUE ) )
 
